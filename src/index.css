@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'League Spartan';
+    src: url('/fonts/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
+}
+
+@theme {
+    --font-spartan: 'League Spartan', sans-serif;
+    --white: hsl(0, 100%, 100%);
+    --grey-500: hsl(0, 0%, 63%);
+    --grey-800: hsl(0, 0%, 27%);
+    --black: hsl(0, 0%, 0%);
+}
+
+html,
+body {
+    width: 100%;
+    background-color: #4b4b4b;
+    color: black;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+@utility flex-center {
+    @apply flex justify-center items-center;
+}
+
+@utility col-center {
+    @apply flex flex-col justify-center items-center;
+}
+
+@utility abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+@layer components {
+    nav {
+        @apply fixed z-50 w-full px-6 py-7;
+
+        div {
+            @apply flex flex-row justify-between lg:justify-normal lg:gap-20;
+        }
+
+        img {
+            @apply block md:hidden;
+        }
+
+        p {
+            @apply hidden font-spartan text-3xl -mb-2 md:block;
+        }
+
+        ul {
+            @apply flex items-center gap-8;
+        }
+
+        a {
+            @apply flex font-spartan cursor-pointer text-nowrap text-sm md:text-base;
+        }
+    }
+}
