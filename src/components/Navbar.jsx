@@ -4,14 +4,13 @@ const Navbar = () => {
     return (
         <nav>
             <div>
-                <a href="#home">
-                    {/* <img src="/images/logo.svg" alt="logo" /> */}
+                <div className="site-logo">
                     <img
                         src="/images/icon-hamburger.svg"
                         alt="hamburger-menu"
                     />
-                    <p>Willow Nest</p>
-                </a>
+                </div>
+                <a href="#home">Willow Nest</a>
                 <ul>
                     <li>
                         <a href="">Home</a>
