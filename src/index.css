@@ -24,17 +24,67 @@ body {
     overflow-x: hidden;
 }
 
-nav {
-    display: flex;
+@layer base {
+    a {
+        @apply font-spartan text-white;
+    }
 }
 
-nav div {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+@layer components {
+    /* Fluid font sizes for <a> */
+    .fluid-text-a {
+        font-size: clamp(0.875rem, 1vw + 0.5rem, 1.25rem);
+    }
 
-nav ul {
-    display: hidden;
-    gap: 2rem;
+    /* underline-hover */
+    .underline-hover {
+        position: relative;
+    }
+
+    .underline-hover::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 3px;
+        width: 0;
+        transform: translateX(0);
+        background-color: theme(--white);
+        transition: width 0.3s ease-in-out;
+    }
+
+    .underline-hover:hover::after {
+        width: 100%;
+        transform: translateX(-100);
+    }
+
+    /* Navigation */
+    .site-nav {
+        @apply fixed z-50 w-full top-0 left-0 px-4 py-6;
+
+        div {
+            @apply relative flex items-center justify-between mx-auto;
+
+            button {
+                @apply absolute left-0 md:hidden;
+            }
+
+            a {
+                @apply mx-auto md:ml-0 md:mr-auto;
+            }
+        }
+
+        .desktop-navbar {
+            @apply hidden w-full md:flex md:justify-end lg:justify-normal lg:ml-20;
+
+            ul {
+                @apply flex gap-8;
+            }
+        }
+    }
+
+    /* Hero */
+    .site-hero {
+        @apply absolute top-0;
+    }
 }
