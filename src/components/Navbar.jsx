@@ -1,45 +1,35 @@
 import React from 'react';
-
+import logo from '../images/logo.svg';
+import menu from '../images/icon-hamburger.svg';
+import { navLinks } from '../../constants';
 const Navbar = () => {
     return (
-        <nav className="site-nav">
-            <div>
-                <button>
-                    <img
-                        src="/images/icon-hamburger.svg"
-                        alt=""
-                        className="hamburger-menu"
-                    />
-                </button>
-                <a href="#home">
-                    <img src="/images/logo.svg" alt="site-logo" />
-                </a>
-                <div className="desktop-navbar">
-                    <ul>
-                        <li>
-                            <a href="#home" className="underline-hover">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#shop" className="underline-hover">
-                                Shop
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#about" className="underline-hover">
-                                About
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#contact" className="underline-hover">
-                                Contact
-                            </a>
-                        </li>
-                    </ul>
+        <header className="site-nav absolute z-50 py-6 px-5 w-full">
+            <nav className="">
+                <div className="flex items-center">
+                    <button className="block absolute lg:hidden">
+                        <img src={menu} alt="" className="hamburger-menu" />
+                    </button>
+                    <a href="#home" className="mx-auto lg:mx-0 mr-auto">
+                        <img src={logo} alt="site-logo" />
+                    </a>
+                    <div className="desktop-navbar hidden lg:block lg:ml-20">
+                        <ul className="flex gap-4">
+                            {navLinks.map((link) => (
+                                <li key={link.id}>
+                                    <a
+                                        href={`${link.id}`}
+                                        className="text-lg border-b-3 border-transparent hover:border-neutral-900 transition-all duration-200 lg:text-white lg:hover:border-b-white"
+                                    >
+                                        {link.title}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </header>
     );
 };
 

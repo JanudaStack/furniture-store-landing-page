@@ -18,10 +18,10 @@
 html,
 body {
     width: 100%;
-    /* background-color: #4b4b4b; */
     color: black;
     scroll-behavior: smooth;
     overflow-x: hidden;
+    font-family: var(--font-spartan);
 }
 
 @layer base {
@@ -56,35 +56,5 @@ body {
     .underline-hover:hover::after {
         width: 100%;
         transform: translateX(-100);
-    }
-
-    /* Navigation */
-    .site-nav {
-        @apply fixed z-50 w-full top-0 left-0 px-4 py-6;
-
-        div {
-            @apply relative flex items-center justify-between mx-auto;
-
-            button {
-                @apply absolute left-0 md:hidden;
-            }
-
-            a {
-                @apply mx-auto md:ml-0 md:mr-auto;
-            }
-        }
-
-        .desktop-navbar {
-            @apply hidden w-full md:flex md:justify-end lg:justify-normal lg:ml-20;
-
-            ul {
-                @apply flex gap-8;
-            }
-        }
-    }
-
-    /* Hero */
-    .site-hero {
-        @apply absolute top-0;
     }
 }
