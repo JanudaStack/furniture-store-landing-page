@@ -4,7 +4,7 @@ import menu from '../images/icon-hamburger.svg';
 import { navLinks } from '../../constants';
 const Navbar = () => {
     return (
-        <header className="site-nav absolute z-50 py-6 px-5 w-full">
+        <header className="site-nav fixed z-50 py-6 px-5 w-full">
             <nav className="">
                 <div className="flex items-center">
                     <button className="block absolute lg:hidden">

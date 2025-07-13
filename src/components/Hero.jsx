@@ -5,14 +5,36 @@ import arrowLeft from '../images/icon-angle-left.svg';
 import arrowRight from '../images/icon-angle-right.svg';
 
 const Hero = () => {
+    const [data] = useState(imgSlider);
     const [slideIndex, setSlideIndex] = useState(1);
 
-    const nextSlide = () => {};
-    const prevSlide = () => {};
+    const nextSlide = () => {
+        if (slideIndex !== data.length) {
+            setSlideIndex(slideIndex + 1);
+        } else if (slideIndex === data.length) {
+            setSlideIndex(1);
+        }
+    };
+
+    const prevSlide = () => {
+        if (slideIndex !== 1) {
+            setSlideIndex(slideIndex - 1);
+        } else if (slideIndex === 1) {
+            setSlideIndex(data.length);
+        }
+    };
+
     return (
         <section className="site-hero">
             {imgSlider.map((img, index) => (
-                <article className="grid grid-cols-1 lg:grid-cols-2 lg:place-items-center">
+                <article
+                    key={img.id}
+                    className={
+                        slideIndex === index + 1
+                            ? 'grid grid-cols-1 lg:grid-cols-2 lg:place-items-center'
+                            : 'hidden'
+                    }
+                >
                     <div className="relative">
                         <picture>
                             <source
@@ -26,11 +48,17 @@ const Hero = () => {
                             />
                         </picture>
                         <div className="absolute bottom-0 right-0 flex lg:-right-31">
-                            <button className="bg-black py-4 px-6 cursor-pointer hover:bg-neutral-700 transition-all duration-200">
-                                <img src={arrowLeft} alt="" />
+                            <button
+                                onClick={prevSlide}
+                                className="bg-black py-4 px-6 cursor-pointer hover:bg-neutral-700 transition-all duration-200"
+                            >
+                                <img src={arrowLeft} alt="arrow-left" />
                             </button>
-                            <button className="bg-black py-4 px-6 cursor-pointer hover:bg-neutral-700 transition-all duration-200">
-                                <img src={arrowRight} alt="" />
+                            <button
+                                onClick={nextSlide}
+                                className="bg-black py-4 px-6 cursor-pointer hover:bg-neutral-700 transition-all duration-200"
+                            >
+                                <img src={arrowRight} alt="arrow-right" />
                             </button>
                         </div>
                     </div>
